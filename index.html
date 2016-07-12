@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Passenger App</title>
+
+    <!-- Bootstrap -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="app/styles/form.css" rel="stylesheet" />
+    <script src="dist/vendor.js"></script>
+    <script src="dist/app.js"></script>
+
+</head>
+
+<body ng-app="flight-app" ng-controller="passengerSearch as vm">
+
+<div class="container">
+
+    <h1>Passenger Data</h1>
+    <form novalidate name="form">
+<div class="form-group">
+    <input  class="form-control" type="text" ng-model="searchName" value="search for name" name="name"
+            required minlength="3"
+    />
+
+    <div ng-show="form.$invalid" class="alert-warning"><h3>Some errors in Form</h3></div>
+    <div ng-show="form.name.$error.required" class="alert-danger"><h3>Required</h3></div>
+    <div ng-show="form.name.$error.minlength" class="alert-danger"><h3>The length must be greater then 3</h3></div>
+
+
+</div>
+
+        <div class="form-group">
+            <button ng-disabled="form.$invalid" class="btn btn-primary" ng-click="vm.loadWithName(searchName)">Search!</button>
+
+
+        </div>
+
+    </form>
+
+
+    <hr/>
+
+    <table ng-show="vm.passengers.length > 0" class="table table-striped">
+        <thead>
+        <tr>
+            <th><strong>#</strong></th>
+            <th><strong>Name, Firstname</strong></th>
+            <th><strong>Miles</strong></th>
+            <th><strong>Status</strong></th>
+
+
+        </tr>
+        </thead>
+        <tr ng-repeat="p in vm.passengers">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}, {{p.firstName}}</td>
+            <td>{{p.bonusMiles}}</td>
+            <td>{{p.passengerStatus | psf}}</td>
+
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

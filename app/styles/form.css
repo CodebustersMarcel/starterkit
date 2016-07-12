@@ -1,0 +1,13 @@
+
+
+input.ng-invalid{
+     border-left:5px;
+     border-left-style:solid;
+     border-left-color:#f00;
+ }
+
+input.ng-valid{
+    border-left:5px;
+    border-left-style:solid;
+    border-left-color:#0f0;
+}
